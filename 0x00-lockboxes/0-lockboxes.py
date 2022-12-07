@@ -4,9 +4,6 @@
 
 def canUnlockAll(boxes):
     """function that check if all boxes can unlock another boxes"""
-    if len(boxes) == 0:
-        return True
-    i = 0
     keys = [0]
     keys_v = list(range(0, len(boxes)))
 
