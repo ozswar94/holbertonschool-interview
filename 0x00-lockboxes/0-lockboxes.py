@@ -1,7 +1,9 @@
-##!/usr/bin/python3
+#!/usr/bin/python3
+""" define the function canUnlockAll"""
 
 
 def canUnlockAll(boxes):
+    """function that check if all boxes can unlock another boxes"""
     ptr1 = 0
     ptr2 = len(boxes) - 1
     size = len(boxes) - 1
