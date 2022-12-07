@@ -4,19 +4,27 @@
 
 def canUnlockAll(boxes):
     """function that check if all boxes can unlock another boxes"""
+    ptr1 = 0
+    ptr2 = len(boxes) - 1
+    size = len(boxes) - 1
 
-    keys = [0]
-    new_key = True
+    while ptr1 <= ptr2:
+        if (
+            (len(boxes[ptr1]) == 0 and ptr1 != size) or
+            (len(boxes[ptr2]) == 0 and ptr2 != size)
+        ):
+            return False
 
-    while new_key:
-        new_key = False
-        for b in boxes:
-            if boxes.index(b) in keys:
-                for i in b:
-                    if i not in keys:
-                        new_key = True
-                        keys.append(i)
-    if len(boxes) == len(keys):
-        return True
-    else:
-        return False
+        for i in boxes[ptr1]:
+            print(i, size)
+            if i > size and ptr1 != size:
+                return False
+        for i in boxes[ptr2]:
+            print(i, size)
+            if i > size and ptr2 != size:
+                return False
+
+        ptr1 += 1
+        ptr2 -= 1
+
+    return True
