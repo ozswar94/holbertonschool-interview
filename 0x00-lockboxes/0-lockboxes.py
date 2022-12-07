@@ -16,11 +16,9 @@ def canUnlockAll(boxes):
             return False
 
         for i in boxes[ptr1]:
-            print(i, size)
             if i > size and ptr1 != size:
                 return False
         for i in boxes[ptr2]:
-            print(i, size)
             if i > size and ptr2 != size:
                 return False
 
