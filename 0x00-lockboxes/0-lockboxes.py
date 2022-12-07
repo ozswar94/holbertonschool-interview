@@ -8,6 +8,9 @@ def canUnlockAll(boxes):
     ptr2 = len(boxes) - 1
     size = len(boxes) - 1
 
+    if len(boxes) == 0:
+        return True
+
     while ptr1 < ptr2:
         if (len(boxes[ptr1]) == 0 and ptr1 != size):
             return False
