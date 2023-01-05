@@ -5,8 +5,7 @@
 def minOperations(n):
     if not n or not isinstance(n, int) or n <= 1:
         return 0
-    ch = 1
-    op = 0
+    ch, op = 1, 0
     while ch != n:
         if (n % ch) == 0:
             cp = ch
