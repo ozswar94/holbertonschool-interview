@@ -9,7 +9,7 @@ def minOperations(n):
     op = 0
     cp = ''
     while len(ch) != n:
-        if len(ch) % 2 or len(ch) == n // 2:
+        if n % len(ch) == 0:
             cp = ch
             ch += cp
             op += 2
