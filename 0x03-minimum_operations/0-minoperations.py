@@ -11,9 +11,7 @@ def minOperations(n):
     while len(ch) != n:
         if n % len(ch) == 0:
             cp = ch
-            ch += cp
-            op += 2
-        else:
-            ch += cp
             op += 1
+        ch += cp
+        op += 1
     return op
