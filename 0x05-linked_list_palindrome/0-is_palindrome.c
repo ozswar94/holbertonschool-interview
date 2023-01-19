@@ -33,7 +33,7 @@ int is_palindrome(listint_t **head)
 	}
 
 	i2 -= 1;
-	for (i1 = 0; i1 <= i2; i1++, i2--)
+	for (i1 = 0; i1 < i2; i1++, i2--)
 		if (list_tmp[i1] != list_tmp[i2])
 			return (0);
 
