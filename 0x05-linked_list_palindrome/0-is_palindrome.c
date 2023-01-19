@@ -10,12 +10,14 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int i;
-	int *list_tmp;
 	unsigned int size;
+	int i1, i2;
+	int *list_tmp;
 	listint_t *tmp = *head;
 
-	if (!(*head))
+	if (!head)
+		return (0);
+	if (!(*head) || !(*head)->next)
 		return (1);
 
 	for (size = 0; tmp; size++)
@@ -26,18 +28,16 @@ int is_palindrome(listint_t **head)
 		return (0);
 
 	tmp = *head;
-	for (i = 0; tmp; i++)
+	for (i2 = 0; tmp; i2++)
 	{
-		list_tmp[i] = tmp->n;
+		list_tmp[i2] = tmp->n;
 		tmp = tmp->next;
 	}
 
-	tmp = *head;
-	for (i = size - 1; tmp; i--)
-	{
-		if (list_tmp[i] != tmp->n)
+	i2 -= 1;
+	for (i1 = 0; i1 <= i2; i1++, i2--)
+		if (list_tmp[i1] != list_tmp[i2])
 			return (0);
-		tmp = tmp->next;
-	}
+
 	return (1);
 }
