@@ -23,10 +23,10 @@ unsigned long getbeg(unsigned long n)
  **/
 int is_palindrome(unsigned long n)
 {
-	unsigned long beg, end;
+	unsigned long b, e;
 
-	for (beg = getbeg(n), end = 1; beg > end; beg /= 10, end *= 10)
-		if (n / beg % 10 != n / end % 10)
+	for (b = getbeg(n), e = 1; b > e; b /= 10, e *= 10)
+		if (n / b % 10 != n / e % 10)
 			return (0);
 	return (1);
 }
