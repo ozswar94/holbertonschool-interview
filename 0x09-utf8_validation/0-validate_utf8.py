@@ -23,7 +23,7 @@ def validUTF8(data):
         elif data[i] < 0 and data[i] > 255:
             return False
 
-        while (bit > 4) and (data[i] & (1 << bit)):
+        while (bit >= 0) and (data[i] & (1 << bit)):
             valid_bit += 1
             bit -= 1
         size -= valid_bit
