@@ -7,14 +7,18 @@
 
 def validUTF8(data):
     size = len(data)
+    if not isinstance(data, list):
+        return False
 
     for i in data:
         bit = 7
         valid_bit = 0
+        if not isinstance(i, int):
+            return False
         if i < 128:
             size -= 1
             continue
-        elif i >= 256:
+        elif i < 0 and i > 255:
             return False
 
         while (bit > 4) and (i & (1 << bit)):
