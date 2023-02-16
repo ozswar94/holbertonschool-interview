@@ -18,12 +18,13 @@ def validUTF8(data):
             i += 1
             continue
 
-        if data[i] & (1 << 7) and not data[i] & (1 << 6):
-            return False
-
         while (bit >= 4) and (data[i] & (1 << bit)):
             valid_bit += 1
             bit -= 1
+
+        if valid_bit > 1 and (data[i] & 1 << 7 and not data[i] & 1 << 6):
+            return False
+
         size -= valid_bit
         if size < 0:
             return False
