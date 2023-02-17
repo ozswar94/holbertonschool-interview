@@ -6,7 +6,6 @@
 
 
 def validUTF8(data):
-    size = len(data)
     i = 0
 
     while i < len(data):
@@ -14,18 +13,17 @@ def validUTF8(data):
         valid_bit = 0
 
         if data[i] < (1 << 7):
-            size -= 1
             i += 1
             continue
 
         if data[i] & (1 << 7) and not data[i] & (1 << 6):
             return False
 
-        while (bit >= 4) and (data[i] & (1 << bit)):
+        while bit >= 4 and (data[i] & (1 << bit)):
             valid_bit += 1
             bit -= 1
-        size -= valid_bit
-        if size < 0:
+
+        if i + valid_bit < len(data) or valid_bit == 0:
             return False
         i += valid_bit
 
