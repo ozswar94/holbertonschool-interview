@@ -6,25 +6,21 @@
 
 
 def validUTF8(data):
-    i = 0
+    bit_c = 0
 
-    while i < len(data):
-        bit = 7
-        valid_bit = 0
-
-        if data[i] < (1 << 7):
-            i += 1
-            continue
-
-        if data[i] & (1 << 7) and not data[i] & (1 << 6):
+    for i in data:
+        if bit_c:
+            bit_c -= 1
+            if (((i & 0xff) >> 6) != 2):
+                return False
+        elif (i & 0xF0) == 0xF0:
+            bit_c = 3
+        elif (i & 0xE0) == 0xE0:
+            bit_c = 2
+        elif (i & 0xC0) == 0xC0:
+            bit_c = 1
+        elif not (i & 0x80):
+            bit_c = 0
+        else:
             return False
-
-        while bit >= 4 and (data[i] & (1 << bit)):
-            valid_bit += 1
-            bit -= 1
-
-        if i + valid_bit < len(data) or valid_bit == 0:
-            return False
-        i += valid_bit
-
-    return True
+    return not bit_c
