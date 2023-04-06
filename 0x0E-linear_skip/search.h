@@ -26,6 +26,5 @@ typedef struct skiplist_s
 
 /*function*/
 skiplist_t *linear_skip(skiplist_t *list, int value);
-void free_skiplist(skiplist_t *list);
 
 #endif /* SEARCH_H */
